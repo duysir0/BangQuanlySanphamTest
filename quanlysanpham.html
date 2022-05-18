@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <style>
-        #products hd{
+        #products {
             font-family: Arial, Helvetica, sans-serif;
             border-collapse: collapse;
             width: 100%;
@@ -39,7 +39,7 @@
     <input id="productName" placeholder="Nhập tên sản phẩm cần thêm" type="text">
     <button onclick="addProduct()">Thêm</button>
 </div>
-<table>
+<table id="products">
     <thead>
     <tr>
         <th>STT</th>
@@ -54,16 +54,17 @@
 </table>
 <script>
     let products = ['IPhone 13 Pro Max', 'IPhone 12 Pro Max', 'IPhone 11', 'Samsung S22 Ultra'];
+
     // Tạo và hiển thị danh sách sản phẩm
     function showListProduct() {
-        let tableBody = '';
+        var tableBody = '';
         for (i = 0; i < products.length; i++) {
             tableBody +=
                         `<tr>
                              <td>${i + 1}</td>
                              <td>${products[i]}</td>
-                             <td><button id="editProductButt" onclick="deleteRow()">Edit</button></td>
-                             <td><button class="delButton" id="delProdButt${i + 1}" onclick="delProduct()">Delete</button></td>
+                             <td><button id="editProductButt" onclick="">Edit</button></td>
+                             <td><button class="delButton" id="${i + 1}" onclick="delRow()">Delete</button></td>
                         </tr>`
 
         }
@@ -76,21 +77,33 @@
     }
 
     function addProduct() {
-        let name = document.getElementById('productName').value;
-        products.push(name);
+        let vatphammoi = document.getElementById('productName').value;
+        products.push(vatphammoi);
         showListProduct();
     }
 
-    function delProduct() {
-    //   let abc = document.getElementsByClassName('delButton')
-    //    console.log(abc)}
-    // switch (document.getElementsByClassName('delButton')){
-    //     case 1:
-  }
+    function delRow() {
+        let vatphammoi = products
+        console.log(vatphammoi)
+        for(i=0;i<vatphammoi.length;++){
+            if()
 
-    function editProduct() {
-    }
-    showListProduct();
+        }
+        showListProduct()
+}showListProduct()
+       //  let id = document.getElementsByClassName('delButton')
+       // console.log(id)
+       // switch (id){
+       //     case 0:
+       //         document.getElementById("tableBody").innerHTML = ''
+       //         break;
+       //         case 1:
+       //             document.getElementById("tableBody").innerHTML = ''
+
+
+    // function editProduct() {
+    // }
+    // showListProduct();
 
 </script>
 </body>
