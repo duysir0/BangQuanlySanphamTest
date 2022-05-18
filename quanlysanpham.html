@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <style>
-        #products {
+        #products hd{
             font-family: Arial, Helvetica, sans-serif;
             border-collapse: collapse;
             width: 100%;
@@ -39,6 +39,7 @@
     <input id="productName" placeholder="Nhập tên sản phẩm cần thêm" type="text">
     <button onclick="addProduct()">Thêm</button>
 </div>
+<table>
     <thead>
     <tr>
         <th>STT</th>
@@ -52,22 +53,22 @@
     </tbody>
 </table>
 <script>
-    let products = ['IPhone 13 Pro Max', 'IPhone 12 Pro Max', 'IPhone 11', 'Samsung S22 Ultra', 'Xiaomi Mi 12'];
-
+    let products = ['IPhone 13 Pro Max', 'IPhone 12 Pro Max', 'IPhone 11', 'Samsung S22 Ultra'];
     // Tạo và hiển thị danh sách sản phẩm
-    function showListProduct() {                             //
+    function showListProduct() {
         let tableBody = '';
         for (i = 0; i < products.length; i++) {
             tableBody +=
                         `<tr>
-                             <td>${i + 1}></td>
+                             <td>${i + 1}</td>
                              <td>${products[i]}</td>
-                             <td><button id="editProductButt" onclick="editProduct()">Edit</button></td>
-                             <td><button id="delProdButt" onclick="delProduct()">Delete</button></td>
+                             <td><button id="editProductButt" onclick="deleteRow()">Edit</button></td>
+                             <td><button class="delButton" id="delProdButt${i + 1}" onclick="delProduct()">Delete</button></td>
                         </tr>`
 
         }
         document.getElementById('tableBody').innerHTML = tableBody;
+        return tableBody;
     }
 
     function showCreateForm() {    //Function làm hiển thị form để add(div id:'create-from') khi ấn vào button
@@ -81,14 +82,16 @@
     }
 
     function delProduct() {
+    //   let abc = document.getElementsByClassName('delButton')
+    //    console.log(abc)}
+    // switch (document.getElementsByClassName('delButton')){
+    //     case 1:
+  }
 
-    }
     function editProduct() {
-        name = document.getElementById('productName').value;
-        index = name.indexOf('productName')
-
     }
-    showListProduct(); //gọi function showlistProduct() ngay khi khởi chạy web
+    showListProduct();
+
 </script>
 </body>
 </html>
