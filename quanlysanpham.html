@@ -27,7 +27,7 @@
             padding-top: 12px;
             padding-bottom: 12px;
             text-align: left;
-            background-color: #04AA6D;
+            background-color: #8c0bfc;
             color: white;
         }
     </style>
@@ -35,7 +35,7 @@
 <body>
 <h1>Quản lý sản phẩm</h1>
 <button onclick="showCreateForm()">Thêm mới</button>
-<div id="add-form" style="display: none">
+<div id="add-form" hidden>
     <input id="productName" placeholder="Nhập tên sản phẩm cần thêm" type="text">
     <button onclick="addProduct()">Thêm</button>
 </div>
@@ -53,9 +53,9 @@
     </tbody>
 </table>
 <script>
-    let products = ['IPhone 13 Pro Max', 'IPhone 12 Pro Max', 'IPhone 11', 'Samsung S22 Ultra'];
+    var products = ['IPhone 13 Pro Max', 'Oppo Reno 7Z', 'Sony Xperia 10', 'Samsung S22 Ultra', 'Xiaomi Mi 12'];
 
-    // Tạo và hiển thị danh sách sản phẩm
+    // Tạo và hiển thị bảng danh sách sản phẩm
     function showListProduct() {
         var tableBody = '';
         for (i = 0; i < products.length; i++) {
@@ -63,16 +63,29 @@
                         `<tr>
                              <td>${i + 1}</td>
                              <td>${products[i]}</td>
-                             <td><button id="editProductButt" onclick="">Edit</button></td>
-                             <td><button class="delButton" id="${i + 1}" onclick="delRow()">Delete</button></td>
+                             <td>
+                             <button class="editButton" id="edit${i + 1}"
+                              onclick=" textPromptSua = prompt('Hãy nhập sản phẩm thay thế:');
+                                        products.splice(${i},1,textPromptSua)
+                                        showListProduct()
+                                      ">Edit</button>
+                             </td>
+                             <td>
+                             <button class="delButton" id="del${i + 1}"
+                              onclick=" if (confirm('Xác nhận xóa?') == true) {
+                                        tableBody.deleteRow(${i});
+                                        products.splice(${i},1,);
+                                        showListProduct();
+                                        }
+                                      ">Delete</button>
+                             </td>
                         </tr>`
 
         }
-        document.getElementById('tableBody').innerHTML = tableBody;
-        return tableBody;
+        document.getElementById('tableBody').innerHTML = tableBody
     }
 
-    function showCreateForm() {    //Function làm hiển thị form để add(div id:'create-from') khi ấn vào button
+    function showCreateForm() {    //Function style.display = 'block' làm hiển thị form để add(div id:'create-from') khi ấn vào button
         document.getElementById('add-form').style.display = 'block';
     }
 
@@ -82,29 +95,7 @@
         showListProduct();
     }
 
-    function delRow() {
-        let vatphammoi = products
-        console.log(vatphammoi)
-        for(i=0;i<vatphammoi.length;++){
-            if()
-
-        }
-        showListProduct()
-}showListProduct()
-       //  let id = document.getElementsByClassName('delButton')
-       // console.log(id)
-       // switch (id){
-       //     case 0:
-       //         document.getElementById("tableBody").innerHTML = ''
-       //         break;
-       //         case 1:
-       //             document.getElementById("tableBody").innerHTML = ''
-
-
-    // function editProduct() {
-    // }
-    // showListProduct();
-
+showListProduct()
 </script>
 </body>
 </html>
