@@ -65,14 +65,15 @@
                              <td>${products[i]}</td>
                              <td>
                              <button class="editButton" id="edit${i + 1}"
-                              onclick=" textPromptSua = prompt('Hãy nhập sản phẩm thay thế:');
-                                        products.splice(${i},1,textPromptSua)
+                              onclick=" textPromptSua = prompt('Hãy nhập sản phẩm thay thế cho '+'${products[i]}:');
+                                        if (textPromptSua != null) {
+                                        products.splice(${i},1,textPromptSua)}
                                         showListProduct()
-                                      ">Sửa</button>
+                                        ">Sửa</button>
                              </td>
                              <td>
                              <button class="delButton" id="del${i + 1}"
-                              onclick=" if (confirm('Xác nhận xóa?') == true) {
+                              onclick=" if (confirm('Xác nhận xóa sản phẩm: ' + '${products[i]}?') == true) {
                                         tableBody.deleteRow(${i});
                                         products.splice(${i},1,);
                                         showListProduct();
